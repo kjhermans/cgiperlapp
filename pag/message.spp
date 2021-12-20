@@ -1,0 +1,15 @@
+<#declare msg ok #>
+
+<div class='dialog'>
+<%= $msg %>
+
+<% if ($ok) { %>
+<br/>
+<a id='continue' href='<%! $ok %>'>Continue</a>
+<script language='javascript'>
+<!--
+document.getElementById('continue').focus();
+//-->
+</script>
+<% } %>
+</div>

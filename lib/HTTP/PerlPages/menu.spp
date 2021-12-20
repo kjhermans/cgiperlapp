@@ -1,0 +1,21 @@
+<#require menu #>
+
+<!-- Menu -->
+
+<% foreach my $item (@{$menu->{items}}) { %>
+
+<% if ($item->{selected}) { %>
+
+<%= $item->{desc} %>
+
+<% } else { %>
+
+<a href='$item->{uri}'><%= $item->{desc} %></a>
+
+<% } %>
+
+|
+
+<% } %>
+
+<!-- /Menu -->

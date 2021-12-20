@@ -1,0 +1,102 @@
+body {
+  background-image: url("../img/fox_transparant.png");
+  background-repeat: no-repeat;
+  background-position: 50% 20px;
+  background-color: #ffffdd;
+}
+
+.dialog {
+  background:white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  padding:15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px; 
+  font-family: arial, sans-serif;
+}
+
+.elt {
+  background:white;
+/*  position:absolute; */
+  padding:15px;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px; 
+  font-family: arial, sans-serif;
+}
+
+.innerelt {
+  background:white;
+/*  position:absolute; */
+  padding:10px;
+  border-radius: 15px;
+  border: 2px solid #dddddd;
+  padding: 10px; 
+  font-family: arial, sans-serif;
+}
+
+.tableheader {
+  font-size:12;
+  background-color:#bbbbff;
+}
+
+.tablerow {
+  font-size:12;
+  background-color:#eeeeff;
+}
+
+.footer {
+  font-size:8;
+  font-color: #bbbbbb;
+}
+
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  color: red;
+}
+
+.blacklink:link {
+  color: black;
+  text-decoration: none;
+}
+
+.blacklink:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.blacklink:hover {
+  color: red;
+  text-decoration: none;
+}
+
+.blacklink:active {
+  color: red;
+  text-decoration: none;
+}
+
+.bottombar {
+  position: fixed;
+  z-index: 100; 
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  background:#eeeeee;
+  padding:10px;
+}

@@ -1,0 +1,91 @@
+<#include HTTP/PerlPages/pager.spp #>
+<#declare page dict expand key #>
+
+<!-- table -->
+
+<table cellpadding=2 cellspacing=1 border=0 class='formtable' width='100%'>
+
+<tr class='tablehead'>
+<td>&nbsp;</td>
+
+<%
+
+if (!scalar(@{$page->{order}})) {
+  my $h = {};
+  foreach my $row (@{$page->{tab}}) {
+    foreach my $fld (keys(%{$row})) {
+      $h->{$fld} = '.';
+    }
+  }
+  my @order = sort(keys(%{$h}));
+  $page->{order} = \@order;
+}
+
+%>
+
+<% foreach my $field (@{$page->{order}}) { %>
+
+<td><%= ($dict->{$field} ? $dict->{$field} : $field) %></td>
+
+<% } %>
+
+</tr>
+
+<% foreach my $row (@{$page->{tab}}) { %>
+
+<tr class='tablerow'>
+<td>
+
+<%
+
+  if (my $func = $page->{rowcallback}) {
+    &$func($out, $row);
+  }
+  if ($expand) {
+    my @args;
+    if (ref($key) eq 'ARRAY') {
+      foreach my $elt (@{$key}) {
+        push @args, $row->{$elt};
+      }
+    } else {
+      @args = ( $row->{$key} );
+    }
+    $out->print(sprintf($expand, @args));
+  }
+
+%>
+
+</td>
+
+<% foreach my $field (@{$page->{order}}) {
+
+my $escape = 1;
+
+my $value = $row->{$field};
+if (ref($page->{transform}{$field}) eq 'HASH') {
+  $value = $page->{transform}{$field}{$row->{$field}};
+} elsif (ref($page->{transform}{$field}) eq 'ARRAY') {
+  $value = $page->{transform}{$field}[$row->{$field}];
+} elsif ($page->{transform}{$field}) {
+  my $func = $page->{transform}{$field};
+  $value = &$func($value, $row, $page);
+  $escape = 0;
+}
+
+%>
+
+<% if ($escape) { %>
+<td><%= $value %></td>
+<% } else { %>
+<td><%! $value %></td>
+<% } %>
+
+<% } %>
+
+</tr>
+
+<% } %>
+
+</table>
+
+<!-- /table -->

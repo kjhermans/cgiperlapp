@@ -1,0 +1,6 @@
+<%
+
+## This page contains the footer that is postfixed to all output
+## (save for the login)
+
+%>
