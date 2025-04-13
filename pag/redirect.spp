@@ -1,0 +1,9 @@
+<#declare page #>
+
+<script language='javascript'>
+<!--
+
+document.location.href = '<%! $page %>';
+
+//-->
+</script>

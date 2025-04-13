@@ -1,6 +1,13 @@
-<%
 
-## This page contains the footer that is postfixed to all output
-## (save for the login)
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
 
-%>
+<div class='bottombar'>
+<small><% my $t = localtime(); %>Page generated at <%= $t %></small>
+</div>
+
+</body>
+</html>

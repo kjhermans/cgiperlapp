@@ -1,6 +1,7 @@
 {
   dbi => {
-    url => '',
+    url => 'dbi:SQLite:dbname=../db/db',
     username => '',
+    password => '',
   },
 };

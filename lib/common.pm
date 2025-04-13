@@ -1,6 +1,6 @@
 use lib '../pag';
 
-use config;
+my $config = eval { require config; };
 use DBI;
 
 use HTTP::CGIRequest;
@@ -9,6 +9,8 @@ use HTTP::State;
 
 use HTTP::PerlPages;
 use HTTP::PerlPages::Menu;
+
+use app;
 
 my $noheader;
 my $nofooter;
@@ -88,7 +90,7 @@ sub fatal {
 
 sub error {
   my ($msg, $ok) = @_;
-  wonkadb_log(4, $msg);
+  logmsg(4, $msg);
   render('error.spp', { msg => $msg, ok => $ok });
 }
 
@@ -236,6 +238,28 @@ sub dict {
   } else {
     return $key;
   }
+}
+
+sub selectall_properly {
+  my ($sql, @binds) = @_;
+  my @result;
+  my $sth = $dbh->prepare($sql) || return undef;
+  $sth->execute(@binds) || return undef;
+  while (my $row = $sth->fetchrow_hashref()) {
+    push @result, $row;
+  }
+  return (wantarray ? @result : \@result);
+}
+
+sub select_datum
+{
+  my ($dbh, $sql, @binds) = @_;
+  my $sth = $dbh->prepare($sql) || return undef;
+  $sth->execute(@binds) || return undef;
+  if (my @row = $sth->fetchrow_array()) {
+    return $row[ 0 ];
+  }
+  return undef;
 }
 
 sub END {

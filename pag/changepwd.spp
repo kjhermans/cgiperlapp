@@ -1,0 +1,29 @@
+<#declare user #>
+
+<div class='dialog'>
+<table>
+<form method='POST' action='changepwd.cgi'>
+<tr>
+<td colspan='2'><h3>Change Password</h3></td>
+</tr>
+<tr>
+<td>Password:</td><td><input type='password' id='pwd1' name='password1'></td>
+</tr>
+<tr>
+<td>Again:</td><td><input type='password' name='password2'></td>
+</tr>
+<tr>
+<td></td>
+<td><input type='submit' value='Change'></td>
+</tr>
+</form>
+</table>
+</div>
+
+<script language='javascript'>
+<!--
+
+document.getElementById('pwd1').focus();
+
+//-->
+</script>

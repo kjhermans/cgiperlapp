@@ -13,7 +13,7 @@ my $username = param('username');
 my $password = param('password');
 
 if ($username && $password) {
-  my $user = wonkadb_login($username, $password);
+  my $user = login($username, $password);
   if ($user) {
     state()->{authenticated} = 1;
     state()->{user} = $user;

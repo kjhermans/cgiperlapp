@@ -1,15 +1,28 @@
 <#declare msg ok #>
 
 <div class='dialog'>
+<center>
+
 <%= $msg %>
 
 <% if ($ok) { %>
+
 <br/>
-<a id='continue' href='<%! $ok %>'>Continue</a>
+<br/>
+<a id='continue' href='<%= $ok %>'>Continue</a>
+<br/>
+<br/>
+<img src='img/wait.gif'/>
 <script language='javascript'>
 <!--
 document.getElementById('continue').focus();
+setTimeout(() => {
+  document.location.href='<%= $ok %>';
+}, 4000);
 //-->
 </script>
+
 <% } %>
+
+</center>
 </div>
