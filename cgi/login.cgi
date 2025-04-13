@@ -4,7 +4,6 @@ sub preheader
 {
   state()->{authenticated} = undef;
   state()->{user} = undef;
-  state()->{pe_id} = undef;
 }
 
 use common;
