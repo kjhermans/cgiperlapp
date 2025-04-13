@@ -1,14 +1,14 @@
-drop table panne_users;
-drop table panne_sequence;
+drop table app_users;
+drop table app_sequence;
 
-create table panne_sequence
+create table app_sequence
 (
   seq_number integer
 );
 
-insert into panne_sequence (seq_number) values (0);
+insert into app_sequence (seq_number) values (0);
 
-create table panne_users
+create table app_users
 (
   usr_id integer not null primary key,
   usr_login varchar not null,
@@ -18,7 +18,7 @@ create table panne_users
   usr_privileges varchar
 );
 
-insert into panne_users
+insert into app_users
   (usr_id, usr_login, usr_password, usr_gecos, usr_privileges)
   values (0, 'root', 'plain:root', 'Administrator', 'all');
 
